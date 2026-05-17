@@ -1,0 +1,95 @@
+# =============================================================================
+# Structured OCR Service - Python Dependencies
+# =============================================================================
+# Install with: pip install -r requirements.txt
+# =============================================================================
+
+# Core Web Framework
+fastapi
+uvicorn[standard]
+python-multipart
+pydantic
+pydantic-settings
+
+# HTTP Client
+requests
+httpx
+aiohttp
+
+# LMDeploy for Model Serving (requires CUDA)
+lmdeploy
+
+# PyInstaller for Building Executables
+pyinstaller
+
+# PyTorch (CUDA version - adjust based on your CUDA version)
+# For CUDA 11.8:
+torch
+# For CUDA 12.1:
+# torch==2.1.0+cu121 --extra-index-url https://download.pytorch.org/whl/cu121
+
+# Transformers and HuggingFace
+transformers
+huggingface-hub
+tokenizers
+accelerate
+
+# Image Processing
+pillow
+opencv-python
+opencv-python-headless
+
+# OCR Related
+pytesseract
+# Note: Tesseract OCR must be installed separately on the system
+
+# PDF Processing (fallback for corrupt PDFs)
+pdf2image
+# Note: pdf2image requires poppler-utils to be installed on the system:
+# Ubuntu/Debian: apt-get install poppler-utils
+# CentOS/RHEL: yum install poppler-utils
+# macOS: brew install poppler
+
+# Scientific Computing
+numpy
+scipy
+pandas
+
+# Utilities
+python-dotenv
+pyyaml
+tqdm
+click
+
+# Logging
+loguru
+
+# Testing (optional, for development)
+pytest
+pytest-asyncio
+
+nvidia-ml-py
+diffusers
+gradio
+einops
+timm
+ultralytics
+sentencepiece
+easyocr
+pypdfium2
+langsmith
+scikit-learn
+python-doctr[torch]
+
+# Added for runtime and service orchestration
+openai>=1.6.0
+jinja2
+hf_transfer
+nvidia-ml-py
+
+imagehash
+pytesseract
+pillow
+motor>=3.3.2
+pymongo>=4.6.1
+PyMuPDF

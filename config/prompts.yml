@@ -1,0 +1,104 @@
+signature_prompt: |
+  Analyze the provided signature region.
+
+  Return JSON only:
+  {
+    "receiver_signature": "yes" or "no"
+  }
+
+bill_of_lading_prompt: |
+  Extract the primary document number and the visible document date.
+
+  Return JSON only:
+  {
+    "bill_no": "<string>" or "null",
+    "date": "<string>" or "null"
+  }
+
+customer_order_info_prompt: |
+  Extract the total quantity shown in the order summary region.
+
+  Return JSON only:
+  {
+    "total_order_quantity": <integer> or "null"
+  }
+
+stamp_latest_prompt: |
+  Extract visible delivery confirmation data from the highlighted proof-of-delivery region.
+
+  Return JSON only:
+  {
+    "stamp_exist": "yes" or "no",
+    "seal_intact": "yes" or "no" or "null",
+    "pod_date": "<string>" or "null",
+    "pod_sign": "yes" or "no" or "null",
+    "total_received": "<number>" or "empty" or "null",
+    "damage": "<number>" or "empty" or "null",
+    "short": "<number>" or "empty" or "null",
+    "over": "<number>" or "empty" or "null",
+    "refused": "<number>" or "empty" or "null",
+    "roc_damaged": "<number>" or "empty" or "null",
+    "damaged_kept": "<number>" or "empty" or "null",
+    "notation_exist": "yes" or "no"
+  }
+
+delivery_receipt_prompt: |
+  Extract visible proof-of-delivery values from the provided receipt region.
+
+  Return JSON only:
+  {
+    "pod_date": "<string>" or "null",
+    "pod_sign": "yes" or "no" or "null",
+    "total_received": "<number>" or "empty" or "null",
+    "damage": "<number>" or "empty" or "null",
+    "refused": "<number>" or "empty" or "null",
+    "customer_order_num": "<string>" or "null"
+  }
+
+receipt_date_prompt: |
+  Extract the visible receipt date from the provided crop.
+
+  Return JSON only:
+  {
+    "pod_date": "<string>" or "null"
+  }
+
+receipt_signature_prompt: |
+  Determine whether a handwritten signature is present in the provided receipt crop.
+
+  Return JSON only:
+  {
+    "pod_sign": "yes" or "no"
+  }
+
+receipt_total_received_prompt: |
+  Extract the visible received quantity from the provided receipt crop.
+
+  Return JSON only:
+  {
+    "total_received": "<number>" or "empty" or "null"
+  }
+
+receipt_damage_prompt: |
+  Extract the visible damage quantity from the provided receipt crop.
+
+  Return JSON only:
+  {
+    "damage": "<number>" or "empty" or "null"
+  }
+
+receipt_refused_prompt: |
+  Extract the visible refused quantity from the provided receipt crop.
+
+  Return JSON only:
+  {
+    "refused": "<number>" or "empty" or "null"
+  }
+
+receipt_customer_order_number_prompt: |
+  Extract the visible customer order number from the provided receipt crop.
+
+  Return JSON only:
+  {
+    "customer_order_num": "<string>" or "null"
+  }

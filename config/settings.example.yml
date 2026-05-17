@@ -1,0 +1,29 @@
+project:
+  name: Structured OCR Extraction Service
+  environment: development
+
+services:
+  vlm_base_url: http://127.0.0.1:23333/v1
+  pixtral_base_url: http://127.0.0.1:3203
+
+models:
+  document_classifier: Models/doc_classify_best.pt
+  region_detector: Models/bol_regions_best.pt
+  receipt_region_detector: Models/receipts_regions_best.pt
+  stamp_detector: Models/stamp_existence.pt
+  orientation_detector: Models/page_orientation.pt
+  sticker_detector: Models/sticker_detector.pt
+  receipt_detector: Models/receipt_detector.pt
+  receipt_detector_secondary: Models/receipt_detector_secondary.pt
+  internvl_model_id: OpenGVLab/InternVL2-8B
+
+runtime:
+  log_level: INFO
+  gpu_workers: 2
+  cors_allow_origins:
+    - "*"
+
+frontend:
+  scheme: http
+  port: 3000
+  fallback_base_url: http://localhost:3000

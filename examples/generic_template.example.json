@@ -1,0 +1,72 @@
+{
+  "template_id": "GENERIC_DELIVERY_TEMPLATE",
+  "template_name": "Generic Delivery Confirmation Template",
+  "category": "BOL",
+  "version": "1.0.0",
+  "description": "Example template for a structured delivery confirmation document.",
+  "identification": {
+    "text_patterns": [
+      "Proof of Delivery",
+      "Bill of Lading",
+      "Customer Order"
+    ],
+    "confidence_threshold": 0.7,
+    "reference_images": []
+  },
+  "region_config": {
+    "detection_method": "yolo",
+    "yolo_config": {
+      "model_name": "generic_region_model",
+      "model_path": "Models/bol_regions_best.pt",
+      "confidence_threshold": 0.6,
+      "iou_threshold": 0.4,
+      "classes": [
+        {
+          "class_id": "0",
+          "region_name": "stamp",
+          "description": "Delivery confirmation region"
+        },
+        {
+          "class_id": "1",
+          "region_name": "bill_of_lading",
+          "description": "Document number region"
+        },
+        {
+          "class_id": "2",
+          "region_name": "customer_order_info",
+          "description": "Order quantity region"
+        },
+        {
+          "class_id": "3",
+          "region_name": "signatures",
+          "description": "Signature region"
+        }
+      ]
+    }
+  },
+  "prompts": {
+    "stamp": {
+      "prompt_text": "Extract delivery confirmation values from this region and return JSON only.",
+      "expected_output_schema": {
+        "stamp_exist": "string",
+        "pod_date": "string",
+        "pod_sign": "string",
+        "total_received": "string"
+      }
+    }
+  },
+  "field_mapping": {
+    "B_L_Number": {
+      "source_field": "bill_of_lading.bill_no",
+      "target_field": "B_L_Number"
+    },
+    "POD_Date": {
+      "source_field": "stamp.pod_date",
+      "target_field": "POD_Date"
+    },
+    "Signature_Exists": {
+      "source_field": "signatures.receiver_signature",
+      "target_field": "Signature_Exists"
+    }
+  }
+}
