@@ -13,6 +13,14 @@ The public version of this repository is intentionally generic. Client specific 
 3. Prompt driven extraction through an OpenAI compatible VLM endpoint
 4. Field mapping into a stable API response
 
+## Problem Statement
+
+Traditional OCR often performs poorly on operational documents that contain dense tables, overlapping labels, stamps, handwritten notes, and repeated numeric fields. In those layouts, a full page OCR pass can mix unrelated zones together and return values from the wrong section.
+
+This project addresses that problem by detecting the specific regions of interest before extraction. Instead of asking a model to interpret the entire page at once, it isolates the relevant blocks such as document number regions, confirmation areas, quantity sections, or signature zones, then sends those focused crops to the VLM.
+
+The template driven layer is equally important for enterprise use. Large organizations often receive multiple document variants for the same workflow, with different vendors, layouts, or scan qualities. The system supports multiple templates and matches incoming pages against them so extraction can adapt to each document family without changing the core application code.
+
 ## Architecture
 
 The service is built around a two stage pipeline.
